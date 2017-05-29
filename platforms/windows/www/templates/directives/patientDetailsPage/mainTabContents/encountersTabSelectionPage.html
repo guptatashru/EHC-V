@@ -1,0 +1,226 @@
+﻿<div class="generalEncountersContainer" ng-controller="encountersTabSelectionCtrl">
+    <div><p ng-show="!encounters.length">{{noEncountersMessage}}</p></div>
+    <div class="patientDropEncounter">
+        <div class="encounterHeading">SELECT ENCOUNTER HISTORY :</div>
+
+        <div class=" btn-group encounterdropdowndiv" dropdown is-open=" status.isencounteropen">
+            <button type="button" class="btn btn-default dropdown-toggle btn-full-length encounterDropdownButton" dropdown-toggle>
+                {{encounterFilter.display}} <span class="caret dropdownCaret"></span>
+            </button>
+            <ul class="dropdown-menu btn-full-length encounterDataDropdown" role="menu">
+                <div class="encounterScrollable">
+                    <li ng-repeat="choice in encounterHistoryType">
+                        <a ng-click="encounterHistoryChanged(choice)" class="dropDownProviderSelection">{{choice.display}} - {{choice.encounterID}}</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+   <div class="encounterID"><b> DATE: </b>{{encounterFilter.date | date:'dd-MM-yyyy'}} , <b>ID:</b> {{encounterFilter.encounterID}}</div>
+    <!--<div class="encountersAccordionContainer">-->
+    <div class="enck">
+
+
+        <p>{{noEncounters}}</p>
+        <accordion ng-if="encounters[encounterFilter.encounterID].Vitals">
+            <accordion-group is-open="status.open1" class="accordianTypeTwo">
+                <accordion-heading>
+                  
+                    <b class="encountersAccordianTitle">VITALS</b>
+                   <!-- <div class="encountersAccordianTitle"><b>VITALS</b></div>-->
+                   
+                    <i class="pull-right glyphicon myEncounterGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+             
+
+                <div class="transactionInfoTable" ng-repeat="vitals in encounters[encounterFilter.encounterID].Vitals">
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="30%">BLOOD PRESSURE:</th>
+                                <th id="transactionsTableDetails" width="35%">WEIGHT:</th>
+                                <th id="transactionsTableDetails" width="35%">HEIGHT:</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="30%">{{vitals.bps}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.weight}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.height}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="30%">TEMPERATURE:</th>
+                                <th id="transactionsTableDetails" width="35%">TEMP. METHOD:</th>
+                                <th id="transactionsTableDetails" width="35%">PULSE:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="30%">{{vitals.temperature}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.temperatureMethod}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.pulse}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="30%">BMI:</th>
+                                <th id="transactionsTableDetails" width="35%">BMI STATUS:</th>
+                                <th id="transactionsTableDetails" width="35%">OXYGEN SATURATION:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="30%">{{vitals.bmi}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.bmiStatus}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.oxygenSaturaton}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="30%">WAIST CIRCULATION:</th>
+                                <th id="transactionsTableDetails" width="35%">HEAD CIRCULATION:</th>
+                                <th id="transactionsTableDetails" width="35%">BPD:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="30%">{{vitals.waistCirculation}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.headCirculation}}</td>
+                                <td id="transactionsTableDetails" width="35%">{{vitals.bpd}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+
+
+        </accordion>
+
+        <accordion ng-if="encounters[encounterFilter.encounterID]['Work/School Note']">
+            <accordion-group is-open="status.open2" class="accordianTypeOne">
+                <accordion-heading>
+
+                    <b class="encountersAccordianTitle">WORK/SCHOOL NOTE</b>
+                    <!-- <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.allergies==null"></img>-->
+
+                    <i class="pull-right glyphicon myEncounterGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="transactionInfoTable" ng-repeat="note in encounters[encounterFilter.encounterID]['Work/School Note']">
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="50%">NOTE TYPE:</th>
+                                <th id="transactionsTableDetails" width="50%">MESSAGE:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="50%">{{note.noteType}}</td>
+                                <td id="transactionsTableDetails" width="50%">{{note.message}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="50%">DOCTOR:</th>
+                                <th id="transactionsTableDetails" width="50%">DATE OF SIGNATURE:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="50%">{{note.doctorName}}</td>
+                                <td id="transactionsTableDetails" width="50%">{{note.dateOfSignature | date: 'dd-MM-yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </accordion-group>
+        </accordion>
+
+       
+        <accordion ng-if="encounters[encounterFilter.encounterID]['Speech Dictation']">
+            <accordion-group is-open="status.open3" class="accordianTypeTwo">
+                <accordion-heading>
+
+                    <b class="encountersAccordianTitle">SPEECH DICTATION</b>
+                    <!-- <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.allergies==null"></img>-->
+
+                    <i class="pull-right glyphicon myEncounterGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="transactionInfoTable" ng-repeat="speech in encounters[encounterFilter.encounterID]['Speech Dictation']">
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="50%">DICTATION:</th>
+                                <th id="transactionsTableDetails" width="50%">ADDITIONAL NOTES:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="50%">{{speech.diction}}</td>
+                                <td id="transactionsTableDetails" width="50%">{{speech.notes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </accordion-group>
+        </accordion>
+
+        <accordion ng-if="encounters[encounterFilter.encounterID].Soap">
+            <accordion-group is-open="status.open4" class="accordianTypeOne">
+                <accordion-heading>
+
+                    <b class="encountersAccordianTitle">SOAP</b>
+
+                    <!-- <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.allergies==null"></img>-->
+
+                    <i class="pull-right glyphicon myEncounterGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="transactionInfoTable" ng-repeat="soap in encounters[encounterFilter.encounterID].Soap">
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="50%">SUBJECTIVE:</th>
+                                <th id="transactionsTableDetails" width="50%">OBJECTIVE:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="50%">{{soap.subjective}}</td>
+                                <td id="transactionsTableDetails" width="50%">{{soap.objective}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead class="patientEncountersTableHead">
+                            <tr>
+                                <th id="transactionsTableDetails" width="50%">ASSESSMENT:</th>
+                                <th id="transactionsTableDetails" width="50%">PLAN:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="transactionsTableDetails" width="50%">{{soap.assessment}}</td>
+                                <td id="transactionsTableDetails" width="50%">{{soap.plan}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+    </div>
+
+</div>

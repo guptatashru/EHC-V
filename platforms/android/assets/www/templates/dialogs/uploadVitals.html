@@ -1,0 +1,199 @@
+﻿<div class="modal-header vitalsHeader">
+    <h3 class="modal-title">ADD VITALS</h3>
+</div>
+
+<div class="modal-body">
+    <div class="modal-container">
+        <table class="table myVitalTable">
+            <tbody>
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">DATE:</span></td>
+                    <td width="30%">
+                        <div ng-controller="datePickerController" class="datePickerContainer">
+                            <p class="input-group">
+                                <input class="vitalsDatepicker" type="string" ng-click="openCalender($event)" datepicker-popup="{{format}}" ng-model="vitalsData.date" placeholder="{{format}}" ng-change="onNewDateSelected()" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn ">
+                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalender($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">BPS:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.bps" type="number">
+                    </td>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">BPD:</span></td>
+                    <td><input type="text" class="firstNameTxt" ng-model="vitalsData.bpd" type="number"></td>
+
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">RESPIRATION RATE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.respiration" type="number">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">OXYGEN SATURATION:</span></td>
+                    <td><input type="text" class="firstNameTxt" ng-model="vitalsData.oxygenSaturation" type="number"></td>
+
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">% Inspired O2:</span></td>
+                    <td><input type="text" class="firstNameTxt" ng-model="vitalsData.inspiredO2Per" type="number"></td>
+
+                </tr>
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">HEART RATE:</span></td>
+                    <td><input type="text" class="firstNameTxt" ng-model="vitalsData.pulse" type="number"></td>
+
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">LEVEL OF CONSCIOUSNESS:</span></td>
+                    <td>
+                        <label class="btn btn-primary vitalsRadioBoxes" ng-model="vitalsData.consciousness" btn-radio="'A'">A</label>
+                        <label class="btn btn-primary vitalsRadioBoxes" ng-model="vitalsData.consciousness" btn-radio="'V'">V</label>
+                        <label class="btn btn-primary vitalsRadioBoxes" ng-model="vitalsData.consciousness" btn-radio="'P'">P</label>
+                        <label class="btn btn-primary vitalsRadioBoxes" ng-model="vitalsData.consciousness" btn-radio="'U'">U</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">URINE OUTPUT:</span></td>
+                    <td><input type="text" class="firstNameTxt" ng-model="vitalsData.urineOutput"></td>
+
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">ESCALATION PLAN:</span></td>
+                    <td>
+                        <label class="btn btn-primary vitalsRadio" ng-model="vitalsData.escalationPlan" btn-radio="'YES'">YES</label>
+                        <label class="btn btn-primary vitalsRadio" ng-model="vitalsData.escalationPlan" btn-radio="'NO'">NO</label>
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">WEIGHT:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.weight" type="number">
+
+                        <div class="btn-group vitalsbtnGrp" dropdown is-open="status.isopen1">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-full-length vitalDropdwnbtn" dropdown-toggle>
+                                {{measurementUnits.weight}}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu btn-full-length vitalsDropDown" role="menu">
+                                <li ng-repeat="unit in weightUnitType track by $index">
+                                    <a ng-click="unitTypeChanged(unit, 'weight')" class="dropDownProviderSelection">{{unit}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">HEIGHT:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.height" type="number">
+                        <div class="btn-group vitalsbtnGrp" dropdown is-open="status.isopen3">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-full-length vitalDropdwnbtn" dropdown-toggle>
+                                {{measurementUnits.height}}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu btn-full-length vitalsDropDown" role="menu">
+                                <li ng-repeat="unit in lengthUnits">
+                                    <a ng-click="unitTypeChanged(unit, 'height')" class="dropDownProviderSelection">{{unit}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">TEMPERATURE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.temperature" type="number">
+                        <div class="btn-group vitalsbtnGrp" dropdown is-open="status.isopen2">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-full-length vitalDropdwnbtn" dropdown-toggle>
+                                {{measurementUnits.temperature}}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu btn-full-length vitalsDropDown" role="menu">
+                                <li ng-repeat="unit in tempUnitType">
+                                    <a ng-click="unitTypeChanged(unit, 'temperature')" class="dropDownProviderSelection">{{unit}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">PAIN SCORE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.painScore" type="number">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">HEAD CIRCUMFERENCE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.headCircumference" type="number">
+                        <div class="btn-group vitalsbtnGrp" dropdown is-open="status.isopen4">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-full-length vitalDropdwnbtn" dropdown-toggle>
+                                {{measurementUnits.headCircumference}}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu btn-full-length vitalsDropDown" role="menu">
+                                <li ng-repeat="unit in lengthUnits">
+                                    <a ng-click="unitTypeChanged(unit, 'headCircumference')" class="dropDownProviderSelection">{{unit}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">WAIST CIRCUMFERENCE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.waistCircumference" type="number">
+                        <div class="btn-group vitalsbtnGrp" dropdown is-open="status.isopen5">
+                            <button type="button" class="btn btn-default dropdown-toggle btn-full-length vitalDropdwnbtn" dropdown-toggle>
+                                {{measurementUnits.waistCircumference}}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu btn-full-length vitalsDropDown" role="menu">
+                                <li ng-repeat="unit in lengthUnits">
+                                    <a ng-click="unitTypeChanged(unit, 'waistCircumference')" class="dropDownProviderSelection">{{unit}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">BMI:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.bmi" type="number">
+                    </td>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">GLUCOSE:</span></td>
+                    <td>
+                        <input type="text" class="firstNameTxt" ng-model="vitalsData.glucoseMmol" type="number">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td width="20%" class="vitalsData"><span class="uploadFilter">MONITORING FREQUENCY:</span></td>
+                    <td>
+                        <input type="text" class="vitalsTxt" ng-model="vitalsData.monitoringFrequency" type="number">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="progress vitalProgress">
+
+    <progressbar max="progressBarSpecs.max" value="earlyWarning" type="{{type}}"><span style="color:white; white-space:nowrap;">{{earlyWarning}}</span></progressbar>
+</div>
+
+
+<div class="modal-footer">
+    <div class="saveBtn">
+
+        <button type="submit" class="btn btn-primary btn-block btnUploadVital" ng-click="uploadData()" ng-disabled="(progressBarSpecs.current < progressBarSpecs.max)">SAVE</button>
+        <button type="submit" class="btn btn-primary btn-block btnUploadVitalCancel" ng-click="closeDialog()">CANCEL</button>
+    </div>
+    <img src="assets/images/ajax_loader.gif" ng-if="vitalsUploading" />
+    <!-- <div class="cancelBtn">
+         <button type="submit" class="btn btn-primary btn-block btnUploadVitalCancel" ng-click="closeDialog()">CANCEL</button>
+     </div>-->
+</div>

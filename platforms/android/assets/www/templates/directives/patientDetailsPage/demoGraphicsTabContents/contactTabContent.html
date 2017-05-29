@@ -1,0 +1,62 @@
+﻿<div class="patientDemoDetails">
+         <div class="patientContactFirstClass">
+            <table>
+                  <thead class="patientTableHead">
+                      <tr>
+                          <th>ADDRESS:</th>
+                      </tr>
+                  </thead>
+                    <tbody class="patientTableBody">
+                        <tr>
+                            <td>{{contactDemo.address}}</td>
+                                
+                        </tr>
+                    </tbody>
+                    </table>
+            </div>
+            
+            
+           
+            <div class="patientContactSecondClass">
+            <table>
+                <thead class="patientContactSecondTableHead patientTableHead">
+                    <tr>
+                        <th>MOTHER'S NAME:</th>
+                        <th>GUARDIAN NAME:</th>
+                        <th>EMERGENCY CONTACT:</th>
+                    </tr>
+                </thead>
+                <tbody class="patientContactSecondTableBody patientTableBody">
+                    <tr>
+                        <td>{{contactDemo.motherName}}</td>
+                        <td>{{contactDemo.guardianName}}</td>
+                        <td>{{contactDemo.emergencyContact}}</td>
+                    </tr>
+                </tbody>
+             </table>
+            </div>
+       <div class="patientContactThirdClass">
+           <table>
+               <thead class="patientContactThirdTableHead patientTableHead">
+                   <tr>
+                       <th>EMERGENCY PHONE:</th>
+                       <th>HOME PHONE:</th>
+                       <th>WORK PHONE:</th>
+                       <th>MOBILE PHONE:</th>
+                   </tr>
+               </thead>
+               <tbody class="patientContactThirdTableBody patientTableBody">
+                   <tr>
+                       <td><a href="tel:{{contactDemo.emergencyPhone}}">{{contactDemo.emergencyPhone}}</a></td>
+                       <td><a href="tel:{{contactDemo.homePhone}}">{{contactDemo.homePhone}}</a></td>
+                       <td><a href="tel:{{contactDemo.workPhone}}">{{contactDemo.workPhone}}</a></td>
+                       <td><a href="tel:{{contactDemo.mobilePhone}}">{{contactDemo.mobilePhone}}</a></td>
+
+                   </tr>
+               </tbody>     
+       
+           </table>
+       </div>
+    
+</div>  
+    

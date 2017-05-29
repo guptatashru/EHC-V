@@ -1,0 +1,111 @@
+﻿<div class="generalPageContainers">
+    <div class="loadingGifContainer" id="pageLoadingGif" ng-style="loaderGifClass">
+        <div class="loadingGif"></div>
+    </div>
+
+    <div id="patientDetailsPage">
+        <div class="patientDetailsPagePageHeader">
+            <!--<button class="backButtonContainer" ng-click="backButtonClicked()">
+                <img src="assets/images/back_icon.png" class="backButton" />
+            </button>
+            <p class="patientDetailsPageTitle">Patient/Client</p>
+            <img src="assets/images/hp_logo.png" class="hpIcon" />-->
+            <div class="headderContentTable">
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" ng-click="backButtonClicked()">
+                        <img src="assets/images/back_icon.png" class="" />
+                    </button>
+                </div>
+                <div class="textContainerDiv floatLeft">
+                    <button class="headderTextClass" disabled>
+                        <p class="pageTitles">Patient/Client</p>
+                    </button>
+                </div>
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" disabled>
+                        <img src="assets/images/hp_logo.png" class="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="patientSearchPageBody">
+            <div class="patientSearchUtils">
+                <div class="patientSearch-utils-spacing">
+                    <div class="patientBasicDetailsContainer">
+
+                        <div class="patientImage" ng-bind-html="basicDetails.patientImageSource">
+                            <!--<img class="patientPicClass" src="{{basicDetails.patientImageSource}}" />-->
+                        </div>
+                        <div class="patientBasicDetails">
+                            <div class="detailsTextclass"><b>{{basicDetails.name}} ({{basicDetails.id}}) </b></div>
+                            <div class="detailsTextclass">{{basicDetails.dob | date: 'dd-MM-yyyy'}}  Age: {{basicDetails.age}}</div>
+                            <div class="detailsTextclass">{{basicDetails.gender}}</div>
+                            <div class="detailsTextclass">Provider: {{basicDetails.provider}}</div>
+                            <div class="allergyDetails">Allergies: <span ng-repeat="allergie in allergies">{{allergie.allergyName}}{{$last ? '' : ', '}}</span></div>
+                        </div>
+                        
+                        </div>
+                    
+
+                    <div class="patientDetailsPageBody">
+                        <div class="appointmentsAccordion">
+                            <accordion>
+                                <accordion-group is-open="status.open" class="accordianTypeOne">
+                                    <accordion-heading>
+                                        <span>
+                                            <img src="assets/images/appointment_icon.png" />
+                                            <span>
+                                                <b>APPOINTMENTS - </b>
+                                                <img src="assets/images/ajax_loader.gif" ng-if="appoinments==null"></img>
+                                                <span class="appoinetmentDisc" ng-if="appoinments!=null">NEXT APPOINTMENT: {{appoinments[0].scheduledDate | date: 'dd-MM-yyyy'}}, <span ng-if="medicalHistory.appoinments[0].scheduleStartTime.split(':')[0] <= 12">{{appoinments[0].scheduleStartTime.split(':')[0]}}:{{appoinments[0].scheduleStartTime.split(':')[1]}} AM</span><span ng-if="medicalHistory.appoinments[0].scheduleStartTime.split(':')[0] > 12">{{appoinments[0].scheduleStartTime.split(':')[0] - 12}}:{{appoinments[0].scheduleStartTime.split(':')[1]}} PM</span> | {{appoinments[0].categoryType}}</span>
+                                            </span>
+                                            <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                                        </span>
+                                    </accordion-heading>
+                                    <div class="appoinementAccordianContents">
+                                        <div class="appoinementInsideDiv" ng-if="appoinments==null">
+                                            <div class="insideLoadingGif"></div>
+                                        </div>
+                                        <div class="appoinementInsideDiv" ng-if="appoinments!=null">
+                                            <accordion ng-repeat="appoinetment in appoinments">
+                                                <accordion-group is-open="false" is-disabled="true">
+                                                    <accordion-heading>
+                                                        <span class="appointmentTitles">
+                                                            {{appoinetment.title}}<br />
+                                                            {{appoinetment.scheduledDate | date: 'dd-MM-yyyy'}}, <span ng-if="appoinetment.scheduleStartTime.split(':')[0] <= 12">{{appoinetment.scheduleStartTime.split(':')[0]}}:{{appoinetment.scheduleStartTime.split(':')[1]}} AM</span><span ng-if="appoinetment.scheduleStartTime.split(':')[0] > 12">{{appoinetment.scheduleStartTime.split(':')[0] - 12}}:{{appoinetment.scheduleStartTime.split(':')[1]}} PM</span> | {{appoinetment.categoryType}}
+                                                        </span>
+                                                        <!--<i class="pull-right glyphicon myGlyphiconInside" ng-class="{'glyphicon-chevron-up': inside[0].status.open, 'glyphicon-chevron-down': !inside[0].status.open}"></i>-->
+                                                    </accordion-heading>
+                                                    <h1>{{appoinetment.data}}</h1>
+                                                </accordion-group>
+                                            </accordion>
+                                        </div>
+                                    </div>
+                                </accordion-group>
+                            </accordion>
+                        </div>
+
+                        <div class="patientDetailsUtils">
+                            <tabset class="patientPageTabs" justified="true">
+                                <tab heading="Home" class="patientHome" ng-style="patientHomeStyleClass" active="mainSelection[0]" select="onPatientPageTabClicked('home')"></tab>
+                                <tab heading="History" class="patientHome" ng-style="patientHistoryStyleClass" active="mainSelection[1]" select="onPatientPageTabClicked('history')"></tab>
+                                <tab heading="Encounters" class="patientHome" ng-style="patientEncountersStyleClass" active="mainSelection[2]" select="onPatientPageTabClicked('encounters')"></tab>
+                                <tab heading="Documents" class="patientHome" ng-style="patientDocumentsStyleClass" active="mainSelection[3]" select="onPatientPageTabClicked('documents')"></tab>
+                                <tab heading="Transaction" class="patientHome" ng-style="patientTransactionStyleClass" active="mainSelection[4]" select="onPatientPageTabClicked('transaction')"></tab>
+                                <tab heading="Issues" class="patientHome" ng-style="patientIssuesStyleClass" active="mainSelection[5]" select="onPatientPageTabClicked('issues')"></tab>
+                            </tabset>
+                        </div>
+                        <div id="patientInfoDiv">
+                           
+                            <div id="patientInfoDivContents">
+                                <div data-ng-include="selectedHeader.path" id="infoContentLoaderDiv">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

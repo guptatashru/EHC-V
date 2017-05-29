@@ -1,0 +1,22 @@
+﻿<div class="patientTransactionUtils" ng-controller="disclosureTabSelectionCtrl">
+  
+    <div class="transactionInfoTable">
+        <table class="table table-striped">
+            <thead class="patientTransactionsTableHead">
+                <tr>
+                    <th id="transactionsTableDetails" width="30%">RECEPIENT NAME</th>
+                    <th id="transactionsTableDetails" width="30%">DISCLOSURE TYPE</th>
+                    <th id="transactionsTableDetails" width="40%">DESCRIPTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="disclosure in patientDisclosure">
+                    <td id="transactionsTableDetails" width="30%">{{disclosure.recepientName}}</td>
+                    <td id="transactionsTableDetails" width="30%">{{disclosure.disclosureType}}</td>
+                    <td id="transactionsTableDetails" width="40%">{{disclosure.description}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

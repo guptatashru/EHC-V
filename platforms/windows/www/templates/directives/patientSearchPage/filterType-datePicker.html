@@ -1,0 +1,33 @@
+﻿<!--<div ng-controller="datePickerController" class="div-full-length input-group">
+   
+        <input type="text" class="form-control" ng-click="openCalender($event)" datepicker-popup="{{format}}" ng-model="selctedDate" placeholder="{{format}}" ng-change="newDateSelected()" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="openCalender($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+   
+</div>
+<span class="input-group-btn">
+    <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+</span>-->
+
+
+<!--<div class="input-group" id="patient-search-bar" ng-controller="searchBarCtrl">
+    <input type="text" class="form-control" ng-model="patientFilterText" ng-change="filterTextChanged()" ng-keydown="keyDownEvent($event)" placeholder="{{filterName}}" ng-disabled="searchDesabled">
+
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+</div>-->
+
+
+<div class="input-group dobCalender" id="patient-search-bar" ng-controller="datePickerController">
+   
+    <input type="text" class="form-control" ng-click="openCalender($event)" datepicker-popup="{{format}}" ng-model="selctedDate" placeholder="{{format}}" ng-change="newDateSelected()" is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="openCalender($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+
+</div>

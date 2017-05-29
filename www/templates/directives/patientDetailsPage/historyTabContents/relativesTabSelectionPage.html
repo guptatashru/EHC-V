@@ -1,0 +1,7 @@
+﻿<div class="relativesWindow">
+    <div class="customRelativesWindow" ng-repeat="(key, relatives) in historyData.relatives.relativeHistory">
+        <div class="customRelativesWindow" ng-if="key !== 'patientID'">
+            <custom-relatives-history-view text="{{key}}" info="{{relatives}}" choice="{{relatives}}"></custom-relatives-history-view>
+        </div>
+    </div>
+</div>

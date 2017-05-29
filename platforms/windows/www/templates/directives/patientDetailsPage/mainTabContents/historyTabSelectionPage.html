@@ -1,0 +1,14 @@
+﻿<div ng-controller="historyTabSelectionCtrl" class="generalLayout">
+    <div class="patientInfoUtils">
+        <tabset type="pills" class="patientDetailsTab" justified="true">
+            <tab heading="GENERAL" class="patientHistory" ng-style="patientGeneralStyleClass" active="historySelection[0]" select="onPatientHistoryTabClicked('general')"></tab>
+            <tab heading="FAMILY HISTORY" class="patientHistory" ng-style="patientFamilyhistoryStyleClass" active="historySelection[1]" select="onPatientHistoryTabClicked('familyHistory')"></tab>
+            <tab heading="RELATIVES" class="patientHistory" ng-style="patientRelativesStyleClass" active="historySelection[2]" select="onPatientHistoryTabClicked('relatives')"></tab>
+            <tab heading="LIFESTYLE" class="patientHistory" ng-style="patientLifestyleStyleClass" active="historySelection[3]" select="onPatientHistoryTabClicked('lifestyle')"></tab>
+            <tab heading="OTHER" class="patientHistory" ng-style="patientOtherStyleClass" active="historySelection[4]" select="onPatientHistoryTabClicked('other')"></tab>
+        </tabset>
+    </div>
+    <div id="patientDetailsContents" data-ng-include="historySelectedHeader.path">
+
+    </div>
+</div>

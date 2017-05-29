@@ -1,0 +1,1278 @@
+﻿<div class="addPatient">
+    <div class="addPatientView">
+        <div class="generalMessageClass" ng-if="message != ''">Note:{{message}}</div>
+        <accordion>
+            <accordion-group is-open="status.openWho" class="accordianTypeOne">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">WHO</b>
+                    <div ng-if="roundProgressBarSpecs.who.current!=roundProgressBarSpecs.who.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.who.max" current="roundProgressBarSpecs.who.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.who.current==roundProgressBarSpecs.who.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openWho, 'glyphicon-chevron-down': !status.openWho}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">NAME:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="10%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openSex">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.who.sexFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.sexType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'sexFilter', 'who')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.firstName" class="form-control firstNameText" placeholder="{{addPatient.contents.filterPatientFirstName}}" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.middleName" class="form-control firstNameText" placeholder="{{addPatient.contents.filterPatientMiddleName}}" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.lastName" class="form-control firstNameText" placeholder="{{addPatient.contents.filterPatientLastName}}" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">SEX:</p></th>
+                                <th><p class="ptextAlignLeft">DATE OF BIRTH:</p></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.who.patientSex" btn-radio="'Male'">Male</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.who.patientSex" btn-radio="'Female'">Female</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div ng-controller="datePickerController" class="datePickerContainer">
+                                            <p class="input-group">
+                                                <input class="testClass" type="text" ng-click="openCalenderInDialog($event, 'dob')" datepicker-popup="{{format}}" ng-model="addPatientDates.dob" placeholder="{{format}}" is-open="status.addDOB" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn ">
+                                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalenderInDialog($event, 'dob')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">MARITAL STATUS:</p></th>
+                                <th><p class="ptextAlignLeft">S.S.:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openMaritalStatus">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.who.maritalFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.maritalType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'maritalFilter','who')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.ss" class="form-control firstNameText">
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">LICENSE/ID:</p></th>
+                                <th><p class="ptextAlignLeft">EXTERNAL ID:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.licenseId" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.externalId" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">USER DEFINED:</p></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="25%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.who.userDefined1" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="25%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" class=" form-control firstNameText" ng-model="addPatient.who.userDefined2">
+                                    </div>
+                                </td>
+
+                                <td width="25%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" class=" form-control firstNameText" ng-model="addPatient.who.userDefined3">
+                                    </div>
+                                </td>
+
+                                <td width="25%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" class=" form-control firstNameText" ng-model="addPatient.who.userDefined4">
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </accordion-group>
+        </accordion>
+               
+
+    <accordion>
+        <accordion-group is-open="status.openContact1" class="accordianTypeTwo">
+            <accordion-heading>
+                <b class="addPatientAccordianTitle">CONTACT 1</b>
+                <div ng-if="roundProgressBarSpecs.contact1.current!=roundProgressBarSpecs.contact1.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.contact1.max" current="roundProgressBarSpecs.contact1.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                <span ng-if="roundProgressBarSpecs.contact1.current==roundProgressBarSpecs.contact1.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.accordianTypeTwo, 'glyphicon-chevron-down': !status.accordianTypeTwo}"></i>
+            </accordion-heading>
+            <div class="accordianContents">
+                <table class="table infoTable">
+                    <thead>
+                        <tr>
+                            <th><p class="ptextAlignLeft">ADDRESS:</p></th>
+                            <th><p class="ptextAlignLeft">CITY:</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="70%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.address" class="form-control firstNameText">
+                                </div>
+                            </td>
+                            <td width="30%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.city" class=" form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table infoTable">
+                    <thead>
+                        <tr>
+                            <th><p class="ptextAlignLeft">POSTAL CODE:</p></th>
+                            <th><p class="ptextAlignLeft">STATE:</p></th>
+                            <th><p class="ptextAlignLeft">COUNTRY:</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="20%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.postalCode" class="form-control firstNameText">
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="div-fulllength divTablePadded">
+                                    <div class="form-group btn-group div-fulllength addDropdownTitle " dropdown is-open="status.openStateContact1">
+                                        <input type="text" ng-model="addPatient.contact1.contact1StateFilter" class="form-control dropdown-toggle" ng-change="onStateTextBoxChanged('openStateContact1')" dropdown-toggle>
+                                        <!--{{addPatient.contact1.contact1StateFilter}}--> 
+
+                                        <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                            <li ng-repeat="choice in addPatient.contents.contact1StateType[addPatient.contact1.contact1CountryFilter] track by $index">
+                                                <a ng-click="titleSelectionChanged(choice, 'contact1StateFilter', 'contact1')">{{choice}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="40%">
+                                <div class="div-fulllength divTablePadded">
+                                    <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openCountryContact1">
+                                        <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                            {{addPatient.contact1.contact1CountryFilter}} <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                            <li ng-repeat="choice in addPatient.contents.countryType track by $index">
+                                                <a ng-click="titleCountrySelectionChanged(choice, 'contact1CountryFilter','contact1StateFilter', 'contact1')">{{choice}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table infoTable">
+                    <thead>
+                        <tr>
+                            <th><p class="ptextAlignLeft">MOTHER'S NAME:</p></th>
+                            <th><p class="ptextAlignLeft">GUARDIAN'S NAME:</p></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="50%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.motherName" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                </div>
+                            </td>
+                            <td width="50%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.guardianName" class=" form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table infoTable">
+                    <thead>
+                        <tr>
+                            <th><p class="ptextAlignLeft">EMERGENCY CONTACT:</p></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="50%">
+                                <div class="div-fulllength divTablePadded">
+                                    <input type="text" ng-model="addPatient.contact1.emergencyContact" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </accordion-group>
+    </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openContact2" class="accordianTypeOne">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">CONTACT 2</b>
+                    <div ng-if="roundProgressBarSpecs.contact2.current!=roundProgressBarSpecs.contact2.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.contact2.max" current="roundProgressBarSpecs.contact2.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.contact2.current==roundProgressBarSpecs.contact2.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openContact2, 'glyphicon-chevron-down': !status.openContact2}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">EMERGENCY PHONE:</p></th>
+                                <th><p class="ptextAlignLeft">HOME PHONE:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.contact2.emergencyPhone" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.contact2.homePhone" class=" form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">WORK PHONE:</p></th>
+                                <th><p class="ptextAlignLeft">MOBILE PHONE:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.contact2.workPhone" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.contact2.mobilePhone" class=" form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">CONTACT EMAIL:</p></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.contact2.contactEmail" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openChoices" class="accordianTypeTwo">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">CHOICES</b>
+                    <div ng-if="roundProgressBarSpecs.choices.current!=roundProgressBarSpecs.choices.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.choices.max" current="roundProgressBarSpecs.choices.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.choices.current==roundProgressBarSpecs.choices.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openChoices, 'glyphicon-chevron-down': !status.openChoices}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">PROVIDER:</p></th>
+                                <th><p class="ptextAlignLeft">REFERRING PROVIDER:</p></th>
+                                <th><p class="ptextAlignLeft">PHARMACY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openProviderChoice">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.choices.choiceProviderFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.choiceProviderType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'choiceProviderFilter','choices')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openRefProviderChoice">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.choices.choiceRefProviderFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.choiceRefProviderType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'choiceRefProviderFilter','choices')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openPharmacyProviderChoice">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.choices.choicePharmacyFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.choicePharmacyType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'choicePharmacyFilter','choices')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">HIPAA NOTICE RECEIVED:</p></th>
+                                <th><p class="ptextAlignLeft">ALLOW VOICE MESSAGE:</p></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.hippaNotice" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.hippaNotice" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.voiceMessage" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.voiceMessage" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">ALLOW MAIL MESSAGE:</p></th>
+                                <th><p class="ptextAlignLeft">LEAVE MESSAGE WITH:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.mailMessage" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.mailMessage" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.choices.leaveMessage" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">ALLOW SMS:</p></th>
+                                <th><p class="ptextAlignLeft">LEAVE EMAIL:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.sms" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.sms" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.email" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.email" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">ALLOW IMMUNIZATION REGISTRY USE:</p></th>
+                                <th><p class="ptextAlignLeft">ALLOW IMMUNIZATION INFO SHARING:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.registry" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.registry" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.info" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.info" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">ALLOW HEALTH INFORMATION EXCHANGE:</p></th>
+                                <th><p class="ptextAlignLeft">ALLOW PATIENT PORTAL:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.healthInfo" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.healthInfo" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.patientPortal" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.choices.patientPortal" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openEmployer" class="accordianTypeOne">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">EMPLOYER</b>
+                    <div ng-if="roundProgressBarSpecs.employer.current!=roundProgressBarSpecs.employer.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.employer.max" current="roundProgressBarSpecs.employer.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.employer.current==roundProgressBarSpecs.employer.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openEmployer, 'glyphicon-chevron-down': !status.openEmployer}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">OCCUPATION:</p></th>
+                                <th><p class="ptextAlignLeft">EMPLOYER NAME:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.employer.occupation" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.employer.employerName" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">EMPLOYER ADDRESS:</p></th>
+                                <th><p class="ptextAlignLeft">CITY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="60%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.employer.employerAddress" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.employer.employerCity" class=" form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">POSTAL CODE:</p></th>
+                                <th><p class="ptextAlignLeft">STATE:</p></th>
+                                <th><p class="ptextAlignLeft">COUNTRY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="20%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.employer.employerPostalCode" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class="form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openStateEmployer">
+                                            <input type="text" ng-model="addPatient.employer.employerStateFilter" class="form-control dropdown-toggle" ng-change="onStateTextBoxChanged('openStateEmployer')" dropdown-toggle>
+                                                <!--{{addPatient.employer.employerStateFilter}}--> 
+                                            
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.employerStateType[addPatient.employer.employerCountryFilter] track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'employerStateFilter','employer')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openEmployerCountry">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.employer.employerCountryFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.countryType track by $index">
+                                                    <a ng-click="titleCountrySelectionChanged(choice, 'employerCountryFilter', 'employerStateType', 'employer')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openStatistics" class="accordianTypeTwo">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">STATISTICS</b>
+                    <div ng-if="roundProgressBarSpecs.statistics.current!=roundProgressBarSpecs.statistics.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.statistics.max" current="roundProgressBarSpecs.statistics.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.statistics.current==roundProgressBarSpecs.statistics.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openStatistics, 'glyphicon-chevron-down': !status.openStatistics}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">LANGUAGE:</p></th>
+                                <th><p class="ptextAlignLeft">ETHNICITY:</p></th>
+                                <th><p class="ptextAlignLeft">RACE:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openLanguage">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.statistics.languageFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.languageType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'languageFilter','statistics')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openEthnicity">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.statistics.ethnicityFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.ethnicityType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'ethnicityFilter','statistics')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openRace">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.statistics.raceFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.raceType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'raceFilter','statistics')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">FINANCIAL REVIEW DATE:</p></th>
+                                <th><p class="ptextAlignLeft">FAMILY SIZE:</p></th>
+                                <th><p class="ptextAlignLeft">MONTHLY INCOME:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div ng-controller="datePickerController" class="datePickerContainer">
+                                            <p class="input-group">
+                                                <input class="testClass" type="text" ng-click="openCalenderInDialog($event, 'stats')" datepicker-popup="{{format}}" ng-model="addPatientDates.stats" placeholder="{{format}}" is-open="status.frd" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn ">
+                                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalenderInDialog($event, 'stats')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.statistics.familySize" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.statistics.monthlyIncome" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">HOMELESS,ETC.:</p></th>
+                                <th><p class="ptextAlignLeft">INTERPRETER:</p></th>
+                                <th><p class="ptextAlignLeft">MIGRANT/SEASONAL:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.statistics.employerHomeless" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.statistics.interpreter" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.statistics.employerMigrant" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">REFERRAL SOURCE:</p></th>
+                                <th><p class="ptextAlignLeft">VFC:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openReferralSource">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.statistics.referralSourceFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.referralSourceType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'referralSourceFilter','statistics')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openVfc">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.statistics.vfcFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.vfcType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'vfcFilter','statistics')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openMiscellaneous" class="accordianTypeOne">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">MISCELLANEOUS</b>
+                    <div ng-if="roundProgressBarSpecs.miscellaneous.current!=roundProgressBarSpecs.miscellaneous.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.miscellaneous.max" current="roundProgressBarSpecs.miscellaneous.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.miscellaneous.current==roundProgressBarSpecs.miscellaneous.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openMiscellaneous, 'glyphicon-chevron-down': !status.openMiscellaneous}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">DATE DECEASED:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div ng-controller="datePickerController" class="datePickerContainer">
+                                            <p class="input-group">
+                                                <input class="testClass" type="text" ng-click="openCalenderInDialog($event, 'misc')" datepicker-popup="{{format}}" ng-model="addPatientDates.misc" placeholder="{{format}}" is-open="status.frd" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn ">
+                                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalenderInDialog($event, 'misc')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">REASON DECEASED:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <textarea class="form-control" rows="5" ng-model="addPatient.miscellaneous.rDeceased"></textarea>
+                                    </div>
+                                </td>
+                                <td></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openInsurance1" class="accordianTypeTwo">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">INSURANCE 1</b>
+                    <div ng-if="roundProgressBarSpecs.insurance1.current!=roundProgressBarSpecs.insurance1.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.insurance1.max" current="roundProgressBarSpecs.insurance1.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.insurance1.current==roundProgressBarSpecs.insurance1.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openInsurance1, 'glyphicon-chevron-down': !status.openInsurance1}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">PRIMARY INSURANCE PROVIDER:</p></th>
+                                <th><p class="ptextAlignLeft">PLAN NAME:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openInsuranceProvider">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.insurance1.insuranceProviderFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.insuranceProviderType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'insuranceProviderFilter','insurance1')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance1.planName" class="form-control firstNameText">
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">INSURANCE RANK:</p></th>
+                                <th><p class="ptextAlignLeft">EFFECTIVE DATE:</p></th>
+                                <th><p class="ptextAlignLeft">RELATIONSHIP:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance1.insuranceRank" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div ng-controller="datePickerController" class="datePickerContainer">
+                                            <p class="input-group">
+                                                <input class="testClass" type="text" ng-click="openCalenderInDialog($event, 'iEfsDate')" datepicker-popup="{{format}}" ng-model="addPatientDates.iEfsDate" placeholder="{{format}}" is-open="status.frd" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn ">
+                                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalenderInDialog($event, 'iEfsDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openRelationship">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.insurance1.relationshipFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.relationshipType track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice,'relationshipFilter','insurance1')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">POLICY NUMBER:</p></th>
+                                <th><p class="ptextAlignLeft">GROUP NUMBER:</p></th>
+                                <th><p class="ptextAlignLeft">DATE OF BIRTH:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance1.policyNumber" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance1.groupNumber" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div ng-controller="datePickerController" class="datePickerContainer">
+                                            <p class="input-group">
+                                                <input class="testClass" type="text" ng-click="openCalenderInDialog($event, 'iDOB')" datepicker-popup="{{format}}" ng-model="addPatientDates.iDOB" placeholder="{{format}}" is-open="status.frd" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn ">
+                                                    <button type="button" class="btn btn-default datepickerButton" ng-click="openCalenderInDialog($event, 'iDOB')"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">S.S.:</p></th>
+                                <th><p class="ptextAlignLeft">SEX:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance1.insuranceSS" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.insurance1.InsuranceSex" btn-radio="'Male'">Male</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.insurance1.InsuranceSex" btn-radio="'Female'">Female</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openInsurance2" class="accordianTypeOne">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">INSURANCE 2</b>
+                    <div ng-if="roundProgressBarSpecs.insurance2.current!=roundProgressBarSpecs.insurance2.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.insurance2.max" current="roundProgressBarSpecs.insurance2.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.insurance2.current==roundProgressBarSpecs.insurance2.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openInsurance2, 'glyphicon-chevron-down': !status.openInsurance2}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">SUBSCRIBER ADDRESS:</p></th>
+                                <th><p class="ptextAlignLeft">CITY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="70%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance2.subscriberAddress" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance2.subscriberCity" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">POSTAL CODE:</p></th>
+                                <th><p class="ptextAlignLeft">STATE:</p></th>
+                                <th><p class="ptextAlignLeft">COUNTRY:</p></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="20%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance2.subscriberPostalCode" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openInsurance2State">
+                                            <input type="text" ng-model="addPatient.insurance2.insurance2StateFilter" class="form-control dropdown-toggle" ng-change="onStateTextBoxChanged('openInsurance2State')" dropdown-toggle>
+                                                <!--{{addPatient.insurance2.insurance2StateFilter}}--> <!--<span class="caret"></span>-->
+                                           
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.insurance2StateType[addPatient.insurance2.insurance2CountryFilter] track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'insurance2StateFilter','insurance2')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openInsurance2Country">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.insurance2.insurance2CountryFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.countryType track by $index">
+                                                    <a ng-click="titleCountrySelectionChanged(choice, 'insurance2CountryFilter', 'insurance2StateType','insurance2')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">SUBSCRIBER PHONE:</p></th>
+                                <th><p class="ptextAlignLeft">SUBSCRIBER EMPLOYER:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance2.subscriberPhone" class="form-control firstNameText" numbers-only>
+                                    </div>
+                                </td>
+                                <td width="50%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance2.subscriberEmployer" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.openInsurance3" class="accordianTypeTwo">
+                <accordion-heading>
+                    <b class="addPatientAccordianTitle">INSURANCE 3</b>
+                    <div ng-if="roundProgressBarSpecs.insurance3.current!=roundProgressBarSpecs.insurance3.max" class="rpbContainer" round-progress max="roundProgressBarSpecs.insurance3.max" current="roundProgressBarSpecs.insurance3.current" color="#3993cf" bgcolor="#c2c2c2" radius="12" stroke="5" semi="false" rounded="true" clockwise="true" iterations="50" animation="easeInOutQuart"></div>
+                    <span ng-if="roundProgressBarSpecs.insurance3.current==roundProgressBarSpecs.insurance3.max" class="rpbContainer"><i class="glyphicon glyphicon-ok okClass"></i></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.openInsurance3, 'glyphicon-chevron-down': !status.openInsurance3}"></i>
+                </accordion-heading>
+                <div class="accordianContents">
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">SESE ADDRESS:</p></th>
+                                <th><p class="ptextAlignLeft">SE SECITY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="70%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance3.seseAddress" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="30%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance3.seseCity" class="form-control firstNameText" letters-only="[^a-zA-Z]" with="">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">SE POSTAL CODE:</p></th>
+                                <th><p class="ptextAlignLeft">SE STATE:</p></th>
+                                <th><p class="ptextAlignLeft">SE COUNTRY:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="25%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <input type="text" ng-model="addPatient.insurance3.sesePostalCode" class="form-control firstNameText">
+                                    </div>
+                                </td>
+                                <td width="35%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openInsurance3State">
+                                            <input type="text" ng-model="addPatient.insurance3.insurance3StateFilter" class="form-control dropdown-toggle" ng-change="onStateTextBoxChanged('openInsurance3State')" dropdown-toggle>
+                                                <!--{{addPatient.insurance3.insurance3StateFilter}}--> <!--<span class="caret"></span>-->
+                                           
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.insurance3StateType[addPatient.insurance3.insurance3CountryFilter] track by $index">
+                                                    <a ng-click="titleSelectionChanged(choice, 'insurance3StateFilter','insurance3')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td width="40%">
+                                    <div class="div-fulllength divTablePadded">
+                                        <div class=" form-group btn-group div-fulllength addDropdownTitle" dropdown is-open="status.openInsurance3Country">
+                                            <button type="button" class="form-control btn btn-default dropdown-toggle btn-full-length addDropDownButton" dropdown-toggle>
+                                                {{addPatient.insurance3.insurance3CountryFilter}} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu btn-full-length dropdownContents" role="menu">
+                                                <li ng-repeat="choice in addPatient.contents.countryType track by $index">
+                                                    <a ng-click="titleCountrySelectionChanged(choice, 'insurance3CountryFilter', 'insurance3StateType','insurance3')">{{choice}}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table infoTable">
+                        <thead>
+                            <tr>
+                                <th><p class="ptextAlignLeft">ACCEPT ASSIGNMENT:</p></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    <div class="btn-group div-fulllength divTablePadded">
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.insurance3.assignment" btn-radio="'Yes'">Yes</label>
+                                        <label class="btn btn-primary sexRadioBoxes" ng-model="addPatient.insurance3.assignment" btn-radio="'No'">No</label>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </accordion-group>
+        </accordion>
+       
+    </div>
+        <div class="saveBtn">
+            <button type="submit" class="btn btn-primary btn-block btnSaveTable" ng-click="onSaveButtonClicked()" ng-disabled="addPatient.contents.saveButtonDisabled">
+                <b>{{addPatient.contents.btnTitle}}</b>
+            </button>
+        </div>
+</div>

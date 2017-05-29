@@ -1,0 +1,69 @@
+﻿
+<div class="patientStatsDetails patientDemoDetails">
+    <div class="patientStatsFirstClass">
+        <table>
+            <thead class="patientStatsFirstTableHead patientTableHead">
+                <tr>
+                    <th>LANGUAGE:</th>
+                    <th>ETHNICITY:</th>
+                    <th>RACE:</th>
+                </tr>
+            </thead>
+            <tbody class="patientStatsFirstTableBody patientTableBody">
+                <tr>
+
+                    <td>{{statsDemo.language}}</td>
+                    <td>{{statsDemo.ethnicity}}</td>
+                    <td>{{statsDemo.race}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="patientStatsSecondClass">
+       <table>
+            <thead class="patientStatsSecondTableHead patientTableHead">
+                <tr>
+                    <th>FINANCIAL REVIEW DATE:</th>
+                    <th>FAMILY SIZE:</th>
+                    <th>MONTHLY INCOME:</th>
+                    <th>HOMELESS,ETC:</th>
+                </tr>
+            </thead>
+            <tbody class="patientStatsSecondTableBody patientTableBody">
+                <tr>
+                    <td>{{statsDemo.financialReviewDate | date: 'dd-MM-yyyy'}}</td>
+                    <td>{{statsDemo.familySize}}</td>
+                    <td>{{statsDemo.monthlyIncome}}</td>
+                    <td>{{statsDemo.homelessetc}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="patientStatsThirdClass">
+        <table>
+            <thead class="patientStatsThirdTableHead patientTableHead">
+                <tr>
+                    <th>INTERPRETER:</th>
+                    <th>MIGRANT/SEASONAL:</th>
+                    <th>REFERRAL SOURCE:</th>
+                    <th>VFC:</th>
+                </tr>
+            </thead>
+            <tbody class="patientStatsThirdTableBody patientTableBody">
+                <tr>
+                    <td>{{statsDemo.interpreter}}</td>
+                    <td>{{statsDemo.migrant}}</td>
+                    <td>{{statsDemo.referralSource}}</td>
+                    <td>{{statsDemo.vfc}}</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

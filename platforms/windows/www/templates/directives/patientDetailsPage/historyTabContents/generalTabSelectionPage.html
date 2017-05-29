@@ -1,0 +1,54 @@
+﻿<div class="generalHistoryContainers">
+    <div class="riskFactorsHeading"><img src="assets/images/risk_icon.png"/>RISK FACTORS</div>
+       <!--<div class="riskFactorHeader">
+           <div class="btn-group btnRiskFactorHeader" dropdown is-open="status1.isopen">
+              <button type="button" class="btn btn-default dropdown-toggle btn-full-length myButtonDropDown" dropdown-toggle>
+                 {{riskFactorFilter}} <span class="caret"></span>
+              </button>
+                     <ul class="dropdown-menu dropDownHistory" role="menu">
+                        <li ng-repeat="choice in riskFactorType">
+                           <a class="dropDownTextColor" ng-click="riskFactorChanged(choice)">{{choice}}</a>
+                        </li>
+                     </ul>
+             </div>
+           </div>-->
+    <div class="riskFactorBody">
+        <table class="table table-striped riskFactorTable">
+            <tbody>
+                 <tr ng-repeat="general in historyData.general.generalHistory.riskFactors">
+                    <td>{{general}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="riskFactorsHeading"><img src="assets/images/exam_icon.png" />EXAMS/TESTS</div>
+    <!--<div class="riskFactorHeader">
+        <div class="btn-group btnRiskFactorHeader" dropdown is-open="status2.isopen">
+            <button type="button" class="btn btn-default dropdown-toggle btn-full-length myButtonDropDown" dropdown-toggle>
+                {{examFilter}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropDownHistory" role="menu">
+                <li ng-repeat="choice in examType">
+                    <a class="dropDownTextColor" ng-click="examChanged(choice)">{{choice}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+    <div class="riskFactorBody">
+        <table class="table table-striped riskFactorTable">
+            <tbody>
+
+                <tr ng-repeat="general in historyData.general.generalHistory.examHistory">
+                    <td>{{general.examName}}</td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+      

@@ -1,0 +1,30 @@
+﻿<div class="patientHistoryDetails">
+    <div class="othersContents">
+        <div class="othersNameValueContents">
+            <table class="table table-striped customTable">
+                <thead>
+                    <tr>
+                        <td>NAME</td>
+                        <td>VALUE</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="other in historyData.other.otherHistory.otherValues">
+                        <td>{{other.name}}</td>
+                        <td>{{other.value}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="otherAdditionalHistoryContent">
+            <div class="otherAdditionalHistoryInnerContent">
+                <h3 class="additionalHisotryHeading">ADDITIONAL HISTORY</h3>
+                <div class="additionalHisotryHeading">{{historyData.other.otherHistory.additionalHistory}}</div>
+            </div>
+            
+        </div>
+    </div>
+
+
+</div>

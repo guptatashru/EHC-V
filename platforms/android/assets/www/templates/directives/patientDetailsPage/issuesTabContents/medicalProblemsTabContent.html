@@ -1,0 +1,42 @@
+﻿<div class="patientIssuesDetails">
+    <div class="patientmedProblemsFirstClass">
+        <table>
+            <thead class="patientTableHead">
+                <tr>
+                    <th>TITLE</th>
+                    <th>BEGIN</th>
+                    <th>END</th>
+                    <th>DIAGNOSIS CODE</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody class="patientTableBody">
+                <tr>
+                    <td>{{issuesTabsContents.medProblems.title}}</td>
+                    <td>{{issuesTabsContents.medProblems.beginDate}}</td>
+                    <td>{{issuesTabsContents.medProblems.endDate}}</td>
+                    <td>{{issuesTabsContents.medProblems.code}}</td>
+                    <td>{{issuesTabsContents.medProblems.status}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="patientmedProblemsSecondClass">
+        <table>
+            <thead class="patientTableHead">
+                <tr>
+                    <th>REFERRED BY</th>
+                    <th>COMMENTS</th>
+                </tr>
+            </thead>
+            <tbody class="patientTableBody">
+                <tr>
+                    <td>{{issuesTabsContents.medProblems.referredBy}}</td>
+                    <td>{{issuesTabsContents.medProblems.comments}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>

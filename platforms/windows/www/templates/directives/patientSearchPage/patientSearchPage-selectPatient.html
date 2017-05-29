@@ -1,0 +1,57 @@
+﻿<div class="patientSearch-utils-spacing">
+    <div id="patient-header">
+        <table class="table table-striped" id="patientTable">
+            <thead id="patientSearchHead">
+                <tr id="patientSearchHeader">
+                    <th id="tableHeadder" ng-style="patientSearchIdStyleClass" ng-click="onFilterTypeClicked('id')">Patient ID</th>  <!--ng-style directive allows to set css style on html element-->
+                    <th id="tableHeadder" ng-style="patientSearchNameStyleClass" ng-click="onFilterTypeClicked('name')">Full Name</th>
+                    <th id="tableHeadder" ng-style="patientSearchGenderStyleClass" ng-click="onFilterTypeClicked('gender')">Gender</th>
+                    <th id="tableHeadder" ng-style="patientSearchDOBStyleClass" ng-click="onFilterTypeClicked('dob')">Date of Birth</th>
+                </tr>
+            </thead> 
+            <thead>
+                <tr>
+                    <td colspan="4" id="filterType">
+                        <div data-ng-include="selectedHeader.path">   <!--directive ng-include to include the html element-->
+
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <div id="contentTable" ng-scroll-event="scrolled($event, isEndEvent);" ng-swipe-right="checkFunc()">
+            <table class="table table-striped">
+                <tbody id="tableBodyClass">
+                    <tr ng-click="onPatientClicker(p)" ng-repeat="p in patients" id="innerTable">
+                        <td class="patientColumn">{{p.patientID}}</td>
+                        <td class="patientColumn">{{p.name}}</td>
+                        <td class="patientColumn">{{p.gender}}</td>
+                        <td class="patientColumn">{{p.dateOfBirth | date: 'dd-MM-yyyy'}}</td>
+                    </tr>
+                   
+
+                </tbody>
+            </table>
+
+           <!--<div class="ps-dataenquiry">
+        <p>
+            {{patientsLoadedInfo}}
+        </p>
+    </div>-->
+
+
+        </div>
+        <div class="ps-dataenquiry">
+            <p>
+                {{patientsLoadedInfo}}
+            </p>
+        </div>
+    </div>
+
+</div>
+       
+<!--<div class="ps-dataenquiry">
+    <p>
+        {{patientsLoadedInfo}}
+    </p>
+</div>-->

@@ -1,0 +1,32 @@
+﻿<div class="patientDocumentsUtils">
+    <div id="patientDocumentsTable">
+        <table id="patientDocumentTableId">
+            <thead id="patientDocumentsTableHead">      
+                <tr id="patientDocumentsHeader">         
+                    <th id="tableHeaderName" width="60%" ng-style="patientFileNameStyleClass">File Name</th>
+                    <th id="tableHeaderDate" width="40%" ng-style="patientFileUploadDateStyleClass">Upload/Update Date</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div id="docContentTable">
+        <table class="table table-striped docTableBody">
+            <tbody id="patientDocumentsTableBody">            
+                <tr  ng-repeat="doc in patientDetailsToBeDisplayed.documents">
+                    <td class="patientDocColumnName"  width="60%">
+                        <a href="{{doc.documentURL}}" ng-click="onDocumentClicker($event, doc)">
+                            {{doc.documentName}}
+                        </a>
+                    </td>
+                    <td class="patientDocColumnDate" width="40%">{{doc.documentUploadDate | date: 'dd-MM-yyyy'}}</td>
+                </tr>
+           
+            </tbody>                     
+        </table>
+    </div>
+    <div class="documentEnquiry ps-dataenquiry"  >
+        <p>
+            {{documentLoadedInfo}}
+        </p>
+    </div>       
+</div>

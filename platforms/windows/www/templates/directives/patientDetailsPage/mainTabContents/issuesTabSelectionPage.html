@@ -1,0 +1,233 @@
+﻿<div class="medicalHistory" ng-controller="medicalHistoryController">
+    <div class="medicalHistoryView">
+        <accordion>
+            <accordion-group is-open="status.open1" class="accordianTypeTwo">
+                <accordion-heading>
+                    <img src="assets/images/medical_problem_icon.png" />
+                    <b>MEDICAL PROBLEMS</b>
+                    <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.medicalProblems==null"></img>
+
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="appoinementInsideDiv" ng-if="medicalHistory.medicalProblems==null">
+                    <div class="insideLoadingGif"></div>
+                </div>
+                <table class="table table-striped medicalHistoryTable" ng-if="medicalHistory.medicalProblems!=null">
+                    <thead class="medicalProblemsTableHeading">
+                        <tr>
+                            <th>Title</th>
+                            <th>Begin</th>
+                            <th>End</th>
+                            <th>Diagnosis</th>
+                            <th>Status</th>
+                            <th>Occurence</th>
+                            <th>Referred By</th>
+                            <th>Comments</th>
+                            <th>ENC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="medicalProblemsTableBody">
+                        <tr ng-repeat="medical in medicalHistory.medicalProblems track by $index">
+                            <td>{{medical.medicalIssueName}}</td>
+                            <td>{{medical.medicalIssueStartDate | date:'dd-MM-yyyy'}}</td>
+                            <td>{{medical.medicalIssueEndDate | date:'dd-MM-yyyy'}}</td>
+                            <td>{{medical.diagnosis}}</td>
+                            <td></td>
+                            <td>{{medical.occurrence}}</td>
+                            <td>{{medical.referredBy}}</td>
+                            <td>{{medical.comments}}</td>
+                            <td>
+                                <button class="btn" pop-over items="{{encounters[medical.medicalIssueName]}}" ng-click="onEncountersClicked(medical.medicalIssueName)">{{medical.encounters}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </accordion-group>
+        </accordion>
+
+
+        <accordion>
+            <accordion-group is-open="status.open2" class="accordianTypeOne">
+                <accordion-heading>
+                    <img src="assets/images/allergy_icon.png" />
+                    <b>ALLERGIES</b>
+                    <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.allergies==null"></img>
+
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+
+                <div class="appoinementInsideDiv" ng-if="medicalHistory.allergies==null">
+                    <div class="insideLoadingGif"></div>
+                </div>
+                <table class="table table-striped medicalHistoryTable" ng-if="medicalHistory.allergies!=null">
+                    <thead class="medicalProblemsTableHeading">
+                        <tr>
+                            <th>Title</th>
+                            <th>Begin</th>
+                            <th>End</th>
+                            <th>Diagnosis</th>
+                            <th>Reaction</th>
+                            <th>Occurence</th>
+                            <th>Referred By</th>
+                            <th>Comments</th>
+                            <th>ENC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="medicalProblemsTableBody">
+                        <tr ng-repeat="allergies in medicalHistory.allergies">
+                            <td>{{allergies.allergyName}}</td>
+                            <td>{{allergies.begin}}</td>
+                            <td>{{allergies.endDate}}</td>
+                            <td>{{allergies.diagnosis}}</td>
+                            <td>{{allergies.reaction}}</td>
+                            <td>{{allergies.occurrence}}</td>
+                            <td>{{allergies.referredBy}}</td>
+                            <td>{{allergies.comments}}</td>
+                            <td>
+                                <button class="btn" pop-over items="{{encounters[allergies.allergyName]}}" ng ng-click="onEncountersClicked(allergies.allergyName)">{{allergies.encounters}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.open3" class="accordianTypeTwo">
+                <accordion-heading>
+                    <img src="assets/images/medication_icon.png" />
+                    <b>MEDICATIONS</b>
+                    <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.medication==null"></img>
+                    <span class="appoinetmentDisc" ng-if="medicalHistory.medication!=null"></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="appoinementInsideDiv" ng-if="medicalHistory.medication==null">
+                    <div class="insideLoadingGif"></div>
+                </div>
+                <table class="table table-striped medicalHistoryTable" ng-if="medicalHistory.medication!=null">
+                    <thead class="medicalProblemsTableHeading">
+                        <tr>
+                            <th>Title</th>
+                            <th>Begin</th>
+                            <th>End</th>
+                            <th>Diagnosis</th>
+                            <th>Status</th>
+                            <th>Occurence</th>
+                            <th>Referred By</th>
+                            <th>Comments</th>
+                            <th>ENC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="medicalProblemsTableBody">
+                        <tr ng-repeat="medication in medicalHistory.medication">
+                            <td>{{medication.medicationName}}</td>
+                            <td>{{medication.medicationStartDate | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{medication.medicationEndDate | date: 'dd-MM-yyyy'}}</td>
+                            <td>{{medication.diagnosis}}</td>
+                            <td></td>
+                            <td>{{medication.occurrence}}</td>
+                            <td>{{medication.referredBy}}</td>
+                            <td>{{medication.comments}}</td>
+                            <td>
+                                <button class="btn" pop-over items="{{encounters[medication.medicationName]}}" ng ng-click="onEncountersClicked(medication.medicationName)">{{medication.encounters}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.open4" class="accordianTypeOne">
+                <accordion-heading>
+                    <img src="assets/images/surgeries.png" />
+                    <b>SURGERIES</b>
+                    <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.surgeries==null"></img>
+                    <span class="appoinetmentDisc" ng-if="medicalHistory.surgeries!=null"></span>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="appoinementInsideDiv" ng-if="medicalHistory.surgeries==null">
+                    <div class="insideLoadingGif"></div>
+                </div>
+                <table class="table table-striped medicalHistoryTable" ng-if="medicalHistory.surgeries!=null">
+                    <thead class="medicalProblemsTableHeading">
+                        <tr>
+                    <th>Title</th>
+                    <th>Begin</th>
+                    <th>End</th>
+                    <th>Diagnosis</th>
+                    <th>Occurence</th>
+                    <th>Referred By</th>
+                    <th>Comments</th>
+                    <th>ENC</th>
+                            </tr>
+                    </thead>
+                    <tbody class="medicalProblemsTableBody">
+                        <tr ng-repeat="surgeries in medicalHistory.surgeries">
+                            <td>{{surgeries.surgeryName}}</td>
+                            <td>{{surgeries.begin | date:'dd-MM-yyyy'}}</td>
+                            <td>{{surgeries.endDate | date:'dd-MM-yyyy'}}</td>
+                            <td>{{surgeries.diagnosis}}</td>
+                            <td>{{surgeries.occurrence}}</td>
+                            <td>{{surgeries.referredBy}}</td>
+                            <td>{{surgeries.comments}}</td>
+                            <td>
+                                <button class="btn" pop-over items="{{encounters[surgeries.surgeryName]}}" ng-click="onEncountersClicked(surgeries.surgeryName)">{{surgeries.encounters}}</button>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.open5" class="accordianTypeTwo">
+                <accordion-heading>
+                    <img src="assets/images/dental_issues.png" />
+                    <b>DENTAL ISSUES</b>
+                    <img src="assets/images/ajax_loader.gif" ng-if="medicalHistory.dentalIssues==null"></img>
+                    <i class="pull-right glyphicon myGlyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="appoinementInsideDiv" ng-if="medicalHistory.dentalIssues==null">
+                    <div class="insideLoadingGif"></div>
+                </div>
+                <table class="table table-striped medicalHistoryTable" ng-if="medicalHistory.dentalIssues!=null">
+                    <thead class="medicalProblemsTableHeading">
+                        <tr>
+                            <th>Title</th>
+                            <th>Begin</th>
+                            <th>End</th>
+                            <th>Diagnosis</th>
+                            <th>Occurence</th>
+                            <th>Referred By</th>
+                            <th>Comments</th>
+                            <th>ENC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="medicalProblemsTableBody">
+                        <tr ng-repeat="dentals in medicalHistory.dentalIssues">
+                            <td>{{dentals.dentalName}}</td>
+                            <td>{{dentals.begin | date:'dd-MM-yyyy'}}</td>
+                            <td>{{dentals.endDate | date:'dd-MM-yyyy'}}</td>
+                            <td>{{dentals.diagnosis}}</td>
+                            <td>{{dentals.occurrence}}</td>
+                            <td>{{dentals.referredBy}}</td>
+                            <td>{{dentals.comments}}</td>
+                             <td>
+                                <button class="btn" pop-over items="{{encounters[dentals.dentalName]}}" ng-click="onEncountersClicked(dentals.dentalName)">{{dentals.encounters}}</button>
+                            </td>
+                           
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </accordion-group>
+        </accordion>
+    </div>
+
+</div>

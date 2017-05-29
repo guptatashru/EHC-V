@@ -1,0 +1,56 @@
+﻿<!--<div class="patientNotesUtils">
+    <div class="noteHeading">Notes<img src="assets/images/notes_icon.png" class="notesIcon" /></div>
+    <div class="noteDetails">
+        <span ng-repeat="note in notes track by $index">
+            
+            {{note}}<br />
+        </span>
+
+
+    </div>
+
+
+</div>-->
+<!--iterate over object properties where note is a iteration variable and notes is the object using ng-repeat directive-->
+<div ng-controller="notesPageSelectionCtrl">
+    <div><p ng-show="!notes.length">{{noNotesMessage}}</p></div>
+    <div  ng-if="(notesArrayLength)> 0">
+        <accordion ng-repeat="note in notes">
+            <accordion-group is-open="status.open" class="accordianTypeTwo">
+                <accordion-heading>
+                    <table class="table table-striped remindersTable">
+                        <thead class="reminderTableHead">
+                            <tr>
+                                <th id="reminderTableDetails" width="35%">DATE</th>
+                                <th id="reminderTableDetails" width="30%">TITLE</th>
+                                <th id="reminderTableDetails" width="35%">ASSIGNED TO</th>
+                                <!--  <th id="reminderTableDetails" width="20%">{{messages.status}}</th>-->
+                            </tr>
+                        </thead>
+                        <tbody class="reminderTableBody">
+                            <tr>
+                                <td id="reminderTableDetails" width="35%">{{note.noteDate}}</td>
+                                <td id="reminderTableDetails" width="30%">{{note.noteTitle}}</td>
+                                <td id="reminderTableDetails" width="35%">{{note.noteAssignedTo}}</td>
+                                <!--<td id="reminderTableDetails" width="20%">{{messages.statusM}}</td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    <i class="pull-right glyphicon reminderGlyph" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="reminderAccContents">
+                    <div>
+                        {{note.noteBody}}
+                    </div>
+                
+                           
+                </div>
+
+            </accordion-group>
+        </accordion>
+       
+        
+    </div>
+</div>

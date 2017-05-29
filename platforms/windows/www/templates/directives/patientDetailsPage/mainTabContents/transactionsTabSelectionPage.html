@@ -1,0 +1,26 @@
+﻿<div class="patientTransactionUtils" ng-controller="transactionsTabSelectionCtrl">
+
+    <div class="containerHeading"><b>PATIENT TRANSACTIONS</b></div>
+
+    <div class="transactionInfoTable">
+        <table class="table table-striped">
+            <thead class="patientTransactionsTableHead">
+                <tr>
+                    <th id="transactionsTableDetails" width="20%">TYPE</th>
+                    <th id="transactionsTableDetails" width="20%">DATE</th>
+                    <th id="transactionsTableDetails" width="20%">USER</th>
+                    <th id="transactionsTableDetails" width="40%">DETAILS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transaction in patientTransactions">
+                    <td id="transactionsTableDetails" width="20%">{{transaction.type}}</td>
+                    <td id="transactionsTableDetails" width="20%">{{transaction.date | date:'dd-MM-yyyy'}}</td>
+                    <td id="transactionsTableDetails" width="20%">{{transaction.user}}</td>
+                    <td id="transactionsTableDetails" width="40%">{{transaction.details}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+   </div>
+</div>

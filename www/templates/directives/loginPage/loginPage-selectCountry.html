@@ -1,0 +1,11 @@
+﻿
+<div class="btn-group div-full-length" dropdown is-open="status.isopen">
+    <button type="button" class="btn btn-default dropdown-toggle btn-full-length" dropdown-toggle ng-disabled="disabled">
+        <p class="btn-text">{{countryValue}}</p><span class="caret btn-symbol"></span>
+    </button>
+    <ul class="dropdown-menu btn-full-length" role="menu">
+        <li ng-repeat="choice in countries" >
+            <a ng-click="countrySelected(choice)" href>{{choice}}</a>
+        </li>
+    </ul>
+</div>

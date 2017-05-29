@@ -1,0 +1,41 @@
+﻿<div ng-controller="vitalsPageSelectionCtrl" class="vitalsPageClass">
+    <div class="vitalsAddedUtlis">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="earlyWarning">Early warning:</td>
+                    <td rowspan="2" class="addVitalsCell"><button class="btn btn-primary earlyWarning" ng-click="addNewVitals()">Vitals +</button></td>
+                </tr>
+                <tr>
+                    <td class="earlyWarning">{{earlyWarning}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="vitalsPageGraph">
+        <highchart id="chart1" config="chartConfig" class="chartContainer"></highchart>
+       
+    </div>
+    <div class="vitalsTypeSelectionContainer">
+        <div class="graphTableHead">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="graphTypeTableHeader">Name</th>
+                        <th class="graphTypeTableHeader">{{secondHeader}}</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="graphTablebody">
+            <table class="table table-striped">
+                <tbody >
+                    <tr ng-click="setMaster(section)" ng-repeat="section in sections" ng-class="{active_myactive : isSelected(section)}">
+                        <td class="graphTypeTableHeader">{{section.name}}</td>
+                        <td class="graphTypeTableHeader">{{section.values}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

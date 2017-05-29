@@ -1,0 +1,13 @@
+﻿<div class="patientInfoUtils">
+    <tabset type="pills" class="patientDetailsTab" justified="true">
+        <tab heading="PATIENT INFO" class="patientDetails" ng-style="patientPatientInfoStyleClass" active="homeSelection[0]" select="onPatientDetailsTabClicked('patientInfo')"></tab>
+        <!--<tab heading="REMINDERS" class="patientDetails" ng-style="patientRemindersStyleClass" active="homeSelection[1]" select="onPatientDetailsTabClicked('reminders')"></tab>-->
+        <tab heading="NOTES" class="patientDetails" ng-style="patientRemindersStyleClass" active="homeSelection[1]" select="onPatientDetailsTabClicked('notes')"></tab>
+        <tab heading="MEDICAL HISTORY" class="patientDetails" ng-style="patientMedicalHistoryStyleClass" active="homeSelection[2]" select="onPatientDetailsTabClicked('medicalHistory')"></tab>
+        <tab heading="DISCLOSURE" class="patientDetails" ng-style="patientDisclosureStyleClass" active="homeSelection[3]" select="onPatientDetailsTabClicked('disclosure')"></tab>
+        <tab heading="VITALS" class="patientDetails" ng-style="patientVitalsStyleClass" active="homeSelection[4]" select="onPatientDetailsTabClicked('vitals')"></tab>
+    </tabset>
+</div>
+<div id="patientDetailsContents" data-ng-include="homeSelectedHeader.path">
+
+</div>

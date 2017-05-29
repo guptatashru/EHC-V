@@ -1,0 +1,37 @@
+﻿<div class="patientHistoryDetails">
+    <div class="relativeInfoContainer">
+        <h3 class="relativeInfoHeadding"><b>FATHER</b></h3>
+        <div>
+            <h3 class="relativeInfoSubheadding">NAME:</h3>
+            <h2 class="relativeInfoNameData"><b>{{historyData.familyHistory.familyHistory.father}}</b></h2>
+        </div>
+    </div>
+    <div class="relativeInfoContainer">
+        <h3 class="relativeInfoHeadding"><b>MOTHER</b></h3>
+        <div>
+            <h3 class="relativeInfoSubheadding">NAME:</h3>
+            <h2 class="relativeInfoNameData"><b>{{historyData.familyHistory.familyHistory.mother}}</b></h2>
+        </div>
+    </div>
+    <div class="relativeInfoContainer">
+        <h3 class="relativeInfoHeadding"><b>SPOUSE</b></h3>
+        <div>
+            <h3 class="relativeInfoSubheadding">NAME:</h3>
+            <h2 class="relativeInfoNameData"><b>{{historyData.familyHistory.familyHistory.spouce}}</b></h2>
+        </div>
+    </div>
+    <div class="relativeInfoContainer">
+        <h3 class="relativeInfoHeadding"><b>SIBLINGS</b></h3>
+        <div ng-repeat="siblings in historyData.familyHistory.familyHistory.siblings.split(', ')">
+            <h3 class="relativeInfoSubheadding">NAME:</h3>
+            <h2 class="relativeInfoNameData"><b>{{siblings}}</b></h2>
+        </div>
+    </div>
+    <div class="relativeInfoContainer">
+        <h3 class="relativeInfoHeadding"><b>OFFSPRINGS</b></h3>
+        <div ng-repeat="offspring in historyData.familyHistory.familyHistory.offspring.split(', ')">
+            <h3 class="relativeInfoSubheadding">NAME:</h3>
+            <h2 class="relativeInfoNameData"><b>{{offspring}}</b></h2>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿
+<div class="btn-group div-full-length appointmentDropdownSelect" dropdown is-open="status.isopen">
+    <button type="button" class="btn btn-default dropdown-toggle btn-full-length appointmentDropdown" dropdown-toggle>
+        {{sAddress}} <span class="caret dropdownCaret"></span>
+    </button>
+    <ul class="dropdown-menu btn-full-length dropDownList " role="menu">
+        <li ng-repeat="choice in address">
+            <a ng-click="addressSelectionChanged(choice)" class="dropDownProviderSelection" >{{choice}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="loginText">
+    <p class="loginMessage" ng-style="loginMessageStyleClass">{{loginMessage}}</p>
+</div>
+
+<div class="login-utils-spacing"> 
+	<div class="right-inner-addon">
+		<i class="glyphicon glyphicon-user input-large"></i>
+        <input type="text" ng-model="username" class="form-control " placeholder="username" ng-keydown="keyDownEvent($event)" ng-disabled="loginButtonDisabled" />
+	</div>
+</div>
+
+<div class="login-utils-spacing">
+	<div class="right-inner-addon">
+		<i class="glyphicon glyphicon-lock"></i>
+        <input type="password" ng-model="password" class="form-control" placeholder="password" ng-keydown="keyDownEvent($event)" ng-disabled="loginButtonDisabled" />
+	</div>
+</div>
+<!--<div class="login-utils-spacing">
+</div>-->
+<div class="login-utils-spacing">
+    <button type="submit" class="btn btn-primary btn-block btnLogin" ng-click="onLoginClicked()" ng-disabled="loginButtonDisabled">
+        <b>{{buttonText}}</b>
+    </button>
+</div>
+<!--<div class="loginText">
+    <p class="onlineStatus" ng-style="onlineStatusStyleClass">{{onlineStatus}}</p>
+</div>-->

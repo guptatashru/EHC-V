@@ -1,0 +1,31 @@
+﻿
+<div class="patientChoicesDemo patientDemoDetails">
+    <div class="patientChoicesFirstClass">
+        <table>
+            <thead class="patientChoicesFirstTableHead patientTableHead">
+                <tr>
+                    <th>REFERRING PROVIDER:</th>
+                    <th>PHARMACY:</th>
+                    <th>LEAVE MESSAGE WITH:</th>
+                                       
+                </tr>
+            </thead>
+            <tbody class="patientChoicesFirstTableBody patientTableBody">
+                <tr>
+                    <td>{{choicesDemo.referringProvider}}</td>
+                    <td>{{choicesDemo.pharmacy}}</td>
+                    <td>{{choicesDemo.leaveMessage}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="choicesWindow">
+        <div class="customChoicesWindow" ng-repeat="choice in choiceText">
+            <custom-choice-view text="{{choice.text}}" choice="{{choice.choice}}"></custom-choice-view>
+        </div>
+    </div>
+</div>
+
+
+

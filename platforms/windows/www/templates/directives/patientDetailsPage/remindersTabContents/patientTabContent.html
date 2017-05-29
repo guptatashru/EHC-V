@@ -1,0 +1,84 @@
+﻿<div class="clinicalReminder">
+    <div class="clinicalReminderView">
+        <accordion>
+            <accordion-group is-open="status.open" class="accordianTypeTwo">
+                <accordion-heading>
+                    <table class="table table-striped remindersTable">
+                        <thead class="reminderTableHead">
+                            <tr>
+                                <th id="reminderTableDetails" width="20%">{{patient.from}}</th>
+                                <th id="reminderTableDetails" width="30%">{{patient.patients}}</th>
+                                <th id="reminderTableDetails" width="20%">{{patient.date}}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reminderTableBody">
+                            <tr>
+                                <td id="reminderTableDetails" width="20%">{{patient.fromPerson}}</td>
+                                <td id="reminderTableDetails" width="30%">{{patient.patientName}}</td>
+                                <td id="reminderTableDetails" width="20%">{{patient.dateP}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <i class="pull-right glyphicon reminderGlyph" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="reminderAccContents">
+                    <div class="reminderAccView">No results to show</div>
+                </div>
+             </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.open" class="accordianTypeTwo">
+                <accordion-heading>
+                    <table class="table table-striped remindersTable">
+                        <thead class="reminderTableHead">
+                            <tr>
+                                <th id="reminderTableDetails" width="20%">{{patient.from}}</th>
+                                <th id="reminderTableDetails" width="30%">{{patient.patients}}</th>
+                                <th id="reminderTableDetails" width="20%">{{patient.date}}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reminderTableBody">
+                            <tr>
+                                <td id="reminderTableDetails" width="20%">{{patient.fromPerson1}}</td>
+                                <td id="reminderTableDetails" width="30%">{{patient.patientName1}}</td>
+                                <td id="reminderTableDetails" width="20%">{{patient.dateP1}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <i class="pull-right glyphicon reminderGlyph" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="reminderAccContents">
+                    <div class="reminderAccView">No results to show</div>
+                </div>
+            </accordion-group>
+        </accordion>
+
+        <accordion>
+            <accordion-group is-open="status.open" class="accordianTypeTwo">
+                <accordion-heading>
+                    <table class="table table-striped remindersTable">
+                        <thead class="reminderTableHead">
+                            <tr>
+                                <th id="reminderTableDetails" width="20%">{{patient.from}}</th>
+                                <th id="reminderTableDetails" width="30%">{{patient.patients}}</th>
+                                <th id="reminderTableDetails" width="20%">{{patient.date}}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="reminderTableBody">
+                            <tr>
+                                <td id="reminderTableDetails" width="20%">{{patient.fromPerson2}}</td>
+                                <td id="reminderTableDetails" width="30%">{{patient.patientName2}}</td>
+                                <td id="reminderTableDetails" width="20%">{{patient.dateP2}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <i class="pull-right glyphicon reminderGlyph" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                </accordion-heading>
+                <div class="reminderAccContents">
+                    <div class="reminderAccView">No results to show</div>
+                </div>
+             </accordion-group>
+        </accordion>
+    </div>
+</div>

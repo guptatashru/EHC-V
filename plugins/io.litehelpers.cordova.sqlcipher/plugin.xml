@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="io.litehelpers.cordova.sqlcipher"
+    version="0.1.3-pre">
+
+    <name>Cordova sqlcipher adapter</name>
+
+    <license>MIT</license>
+
+    <keywords>sqlite</keywords>
+
+    <description>SQLCipher database adapter for PhoneGap/Cordova, based on Cordova-sqlite-storage. Allows you to use more storage and provides more flexibility than the standard Web SQL database (window.openDatabase).</description>
+
+    <author>Various</author>
+
+    <engines>
+        <engine name="cordova" version=">=3.3.0" />
+    </engines>
+
+    <js-module src="www/SQLitePlugin.js" name="SQLitePlugin">
+        <clobbers target="SQLitePlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <!-- Cordova >= 3.0.0 -->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SQLitePlugin">
+                <param name="android-package" value="io.liteglue.SQLitePlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/io/liteglue/SQLitePlugin.java" target-dir="src/io/liteglue"/>
+
+        <!-- SQLCipher distribution for Android: -->
+        <source-file src="src/android/sqlcipher/assets/icudt46l.zip" target-dir="assets" />
+        <source-file src="src/android/sqlcipher/libs/sqlcipher.jar" target-dir="libs" />
+        <source-file src="src/android/sqlcipher/libs/armeabi/libdatabase_sqlcipher.so" target-dir="libs/armeabi" />
+        <source-file src="src/android/sqlcipher/libs/armeabi/libsqlcipher_android.so" target-dir="libs/armeabi" />
+        <source-file src="src/android/sqlcipher/libs/armeabi/libstlport_shared.so" target-dir="libs/armeabi" />
+        <source-file src="src/android/sqlcipher/libs/armeabi-v7a/libdatabase_sqlcipher.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/sqlcipher/libs/armeabi-v7a/libsqlcipher_android.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/sqlcipher/libs/armeabi-v7a/libstlport_shared.so" target-dir="libs/armeabi-v7a" />
+        <source-file src="src/android/sqlcipher/libs/x86/libdatabase_sqlcipher.so" target-dir="libs/x86" />
+        <source-file src="src/android/sqlcipher/libs/x86/libsqlcipher_android.so" target-dir="libs/x86" />
+        <source-file src="src/android/sqlcipher/libs/x86/libstlport_shared.so" target-dir="libs/x86" />
+
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="SQLitePlugin">
+                <param name="ios-package" value="SQLitePlugin" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/SQLitePlugin.h" />
+        <source-file src="src/ios/SQLitePlugin.m" />
+
+        <!-- SQLCipher source distribution and Security.framework dependency for iOS: -->
+        <header-file src="src/common/sqlite3.h" />
+        <source-file src="src/common/sqlite3.c" />
+        <framework src="Security.framework" />
+
+    </platform>
+
+    <platform name="windows">
+        <js-module src="src/windows/SQLiteProxy.js" name="SQLiteProxy">
+            <merges target="" />
+        </js-module>
+
+        <!-- SQLite3 JS module from SQLite3-WinRT/SQLite3JS: -->
+        <js-module src="src/windows/SQLite3-WinRT/SQLite3JS/js/SQLite3.js" name="SQLite3">
+            <merges target="" />
+        </js-module>
+
+        <!-- Thanks to AllJoyn-Cordova / cordova-plugin-alljoyn: -->
+        <framework src="src/windows/SQLite3-WinRT/SQLite3/SQLite3.Windows/SQLite3.Windows.vcxproj" custom="true" type="projectReference" target="windows" />
+        <framework src="src/windows/SQLite3-WinRT/SQLite3/SQLite3.WindowsPhone/SQLite3.WindowsPhone.vcxproj" custom="true" type="projectReference" target="phone" />
+
+    </platform>
+
+</plugin>
+
+<!-- vim: set expandtab : -->

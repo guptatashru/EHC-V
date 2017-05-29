@@ -1,0 +1,69 @@
+﻿<div class="patientPersonalDetails">
+        <table class="table table-striped detailsTable">
+                <tbody class="detailsTableBody">
+                    <tr>
+                        <td id="detailsHeading">Email Id:</td>
+                        <td><a href="mailto:{{patient.email}}">{{patient.email}}</a></td>
+                    </tr>
+                    <tr>
+                        <td width="20%" id="detailsHeading">Marital Status:</td>
+                        <td width="80%">{{patient.mStatus}}</td>
+                    </tr>
+                    <tr>
+                        <td id="detailsHeading">S.S:</td>
+                        <td>{{patient.ss}}</td>
+                    </tr>
+                    <tr>
+                        <td id="detailsHeading">License/ID:</td>
+                        <td>{{patient.licenseID}}</td>
+                    </tr>
+                    <tr>
+                        <td id="detailsHeading">External ID:</td>
+                        <td>{{patient.externalID}}</td>
+                    </tr>
+                    <tr>
+                        <td id="detailsHeading">User Defined:</td>
+                        <td>{{patient.userDefined}}</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+
+<div class="patientDemographicsUtils">
+    <div class="demographicsContainer">
+        <div class="demoHeading">DEMOGRAPHICS</div>
+        <tabset class="patientPageTabs">
+            <img src="assets/images/contactsicon.png" class="contactsIcon" />
+            <tab heading="Contact" class="patientDemo" ng-style="patientContactDemoStyleClass" active="piSelection[0]" select="onPatientDemoTabClicked('contact')"></tab>
+            <tab heading="Choices" class="patientDemo" ng-style="patientChoicesDemoStyleClass" active="piSelection[1]" select="onPatientDemoTabClicked('choices')"></tab>
+            <tab heading="Employer" class="patientDemo" ng-style="patientEmployerDemoClass" active="piSelection[2]" select="onPatientDemoTabClicked('employer')"></tab>
+            <tab heading="Stats" class="patientDemo" ng-style="patientStatsDemoStyleClass" active="piSelection[3]" select="onPatientDemoTabClicked('stats')"></tab>
+            <tab heading="Misc" class="patientDemo" ng-style="patientMiscDemoStyleClass" active="piSelection[4]" select="onPatientDemoTabClicked('misc')"></tab>
+        </tabset>
+        <div data-ng-include="demographicsSelectedHeader.path" class="secondaryTab">
+
+        </div>
+    </div>
+</div>
+
+<div class="patientNotesUtils">
+    <div class="noteHeading">Notes<img src="assets/images/notes_icon.png" class="notesIcon" /></div>
+    <div class="noteDetails">
+        <span ng-repeat="note in notes track by $index">
+            {{note}}<br/>
+        </span>
+    </div>
+
+    
+</div>
+
+
+
+
+    
+
+
+
+
+
+

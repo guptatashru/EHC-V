@@ -1,0 +1,56 @@
+﻿<div class="pdfPageContainers">
+    <div class="loadingGifContainer" id="pageLoadingGif" ng-style="loaderGifClass">
+        <div class="loadingGif"></div>
+    </div>
+    <div id="pdfViewerPage" ng-controller="pdfViewerCtrl">
+        <div class="pdfViewerPageHeader">
+            <!--<button class="backButtonContainer" ng-click="backButtonClicked()">
+                <img src="assets/images/back_icon.png" class="backButton" />
+            </button>
+                <p class="pdfViewerPageTitle">{{pdfDocumentName}}</p>
+              -->
+            <div class="headderContentTable">
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" ng-click="backButtonClicked()">
+                        <img src="assets/images/back_icon.png" class="" />
+                    </button>
+                </div>
+                <div class="textContainerDiv floatLeft">
+                    <button class="headderTextClass" disabled>
+                        <p class="pageTitles">{{pdfDocumentName}}</p>
+                    </button>
+                </div>
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" disabled>
+                        <img src="assets/images/hp_logo.png" class="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pdfViewerBox">
+            <div class="pdfViewerBoxRow">
+                <pdfviewer class="pdfViewer" src="{{pdfURL}}" on-page-load='pageLoaded(page,total)' id="viewer" load-progress='loadProgress(loaded, total, state)'></pdfviewer>
+            </div>
+        </div>
+        <!--<div class="row">
+            <span class="label" ng-show="totalPages">{{currentPage}}/{{totalPages}}</span>
+        </div>-->
+        <div class="pdfViewerControls">
+            <div class="pdfViewerControlsRow">
+                <div class="btn-group" id="pdfViewerButton">
+                    <button class="btn btnCtrl" ng-click="gotoPage(1)">|&lt;</button>
+                    <button class="btn btnCtrl" ng-click="prevPage()">&lt;</button>
+                    <button class="btn btnCtrl" ng-click="zoomIn()">+</button>
+                    <!--<button class="btn" ng-disabled="true">{{currentPage}}/{{totalPages}}</button>-->
+
+                    <button class="btn btnCtrl" ng-click="zoomOut()">-</button>
+                    <button class="btn btnCtrl" ng-click="nextPage()">&gt;</button>
+                    <button class="btn btnCtrl" ng-click="gotoPage(totalPages)">&gt;|</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

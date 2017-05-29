@@ -1,0 +1,67 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/indexOnLessHeight.css" media="(max-height: 1250px)" />
+        <link rel="stylesheet" type="text/css" href="assets/css/indexOnLessWidth.css" media="(max-width: 680px)" />
+        <title>eHealthCare Mobile Application</title>
+    </head>
+    <body>
+        <div id="app" ng-app="app" ng-csp>
+            <div id="pageView" ui-view></div>
+        </div>
+		
+		
+        
+        <script src="vendor\winstore-jscompact\winstore-jscompat.js"></script>
+        <!--<script src="//Microsoft.WinJS.1.0.RC/js/base.js"></script>-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="plugins\com.brodysoft.cordova.sqlcipher\www\SQLitePlugin.js"></script>
+        <script src="vendor\crypto-js-SHA1\crypto-js-sha1.js"></script>
+        <script src="vendor\crypto-js-AES\crypto-js-aes.js"></script>
+
+
+        <script type="text/javascript" src="vendor\pdf-viewer\pdf.compat.js"></script>
+        <script type="text/javascript" src="vendor\pdf-viewer\pdf.js"></script>
+
+        <script type="text/javascript" src="vendor\jquery\jquery.min.js"></script>
+        <script type="text/javascript" src="vendor\bootstrap\bootstrap.js"></script>
+        <script type="text/javascript" src="vendor\angular\angular.js"></script>
+        <script type="text/javascript" src="template-app.js"></script>
+        <script type="text/javascript" src="vendor\mn-swipe\mn-touch.js"></script>
+        <script type="text/javascript" src="vendor\angular-sanitize\angular-sanitize.min.js"></script>        
+        <script type="text/javascript" src="vendor\angular-translate\angular-translate.min.js"></script>
+        <script type="text/javascript" src="vendor\angular-bootstrap\ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="vendor\angular-dialog-service\src\dialogs.js"></script>
+        <script type="text/javascript" src="vendor\angular-touch\fastclick.js"></script>        
+        <script type="text/javascript" src="vendor\ngCordova\dist\ng-cordova.min.js"></script>
+        <script type="text/javascript" src="vendor\angular-ui-router\release\angular-ui-router.js"></script>
+        <script type="text/javascript" src="vendor\angular-idle\angular-idle.min.js"></script>
+        <script type="text/javascript" src="vendor\angular-scroll-event\angular-scroll.js"></script>
+        <script type="text/javascript" src="vendor\angular-scrollable-table\angular-fixed-header-table.js"></script>
+        <script type="text/javascript" src="vendor\highcharts-ng\highcharts.js"></script>
+        <script type="text/javascript" src="vendor\highcharts-ng\highChart-ng.js"></script>
+        <script type="text/javascript" src="vendor\ngStorage\ngStorage.js"></script>
+        <script type="text/javascript" src="vendor\angular-websql\angular-websql.min.js"></script>
+        <script type="text/javascript" src="vendor\angular-round-progressbar\angular-round-progress.min.js"></script>
+
+        <script type="text/javascript" src="src\app\app.js"></script>
+        <script type="text/javascript" src="src\app\controllers\controller.js"></script>
+        <script type="text/javascript" src="src/app\services\urlHitService.js"></script>
+        <script type="text/javascript" src="src/app\services\windowsFileDownload.js"></script>
+        <script type="text/javascript" src="src/app\services\sqlCypherDBService.js"></script>
+        <script type="text/javascript" src="src\common\directives\ng-pdfviewer.js"></script>
+        <script type="text/javascript" src="src\common\directives\loginPage-directives.js"></script>
+        <script type="text/javascript" src="src\common\directives\patientSearchPage-directives.js"></script>
+        <script type="text/javascript" src="src\common\directives\patientDetailsPage-directives.js"></script>
+        
+    </body>
+</html>

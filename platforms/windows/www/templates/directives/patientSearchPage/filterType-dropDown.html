@@ -1,0 +1,48 @@
+﻿<!--<div class="btn-group div-full-length" dropdown is-open="status.isopen">
+    <button type="button" class="btn btn-default dropdown-toggle btn-full-length" dropdown-toggle ng-disabled="searchDesabled">
+        {{patient.gender}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu btn-full-length btnGenderDropdown" role="menu">
+        <li ng-repeat="choice in genderType">
+            <a ng-click="genderSeleteionChanged(choice)">{{choice}}</a>
+        </li>
+    </ul>
+</div>
+<span class="input-group-btn searchbutton">
+    <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+</span>-->
+
+
+
+
+
+
+
+
+<div class="input-group btn-group" id="patient-search-bar"  dropdown is-open="status.isopen">
+
+    <!--  <input type="text" class="form-control" ng-model="patientFilterText" ng-change="filterTextChanged()" ng-keydown="keyDownEvent($event)" placeholder="{{filterName}}" ng-disabled="searchDesabled">-->
+
+    <button type="button" class="btn btn-default dropdown-toggle btn-full-length" dropdown-toggle ng-disabled="searchDesabled">
+        {{patient.gender}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu btn-full-length btnGenderDropdown" role="menu">
+        <li ng-repeat="choice in genderType">
+            <a ng-click="genderSeleteionChanged(choice)">{{choice}}</a>
+        </li>
+    </ul>
+
+
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+</div>
+
+
+<!--<div class="input-group" id="patient-search-bar" ng-controller="searchBarCtrl">
+    <input type="text" class="form-control" ng-model="patientFilterText" ng-change="filterTextChanged()" ng-keydown="keyDownEvent($event)" placeholder="{{filterName}}" ng-disabled="searchDesabled">
+
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+    </span>
+</div>-->

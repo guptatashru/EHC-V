@@ -1,0 +1,38 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "TeleHealthCare"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "TeleHealthCare"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "TeleHealthCare"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "TeleHealthCare"
+        },
+        "io.litehelpers.cordova.sqlcipher": {
+            "PACKAGE_NAME": "TeleHealthCare"
+        }
+    },
+    "dependent_plugins": {}
+}

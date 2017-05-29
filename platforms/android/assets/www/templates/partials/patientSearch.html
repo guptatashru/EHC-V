@@ -1,0 +1,72 @@
+﻿<div class="generalPageContainers" mn-touch swipe-right="navAppear = false" swipe-left="navAppear = true">
+    <div class="navigationDrawerContainer" ng-show="navAppear">
+        <div class="generalNavgiationDrawerBackground" ng-click="navAppear = !navAppear"></div>
+        <div class="navigationDrawer" ng-show="navAppear">
+            <div class="navigationDrawerHeader">
+                <button class="navHeadder transparentButton" ng-click="navAppear = !navAppear">
+                    <img src="assets/images/ehcLogo.png" /><span class="drawerTitle"><b>eHc</b></span>
+                </button>
+            </div>
+            <div class="navigationDrawerAccordion">
+                <accordion>
+                    <accordion-group is-open="status.open" class="navAccordian">
+                        <accordion-heading>
+                            <span ng-click="toggleOpen()">
+                                <span>
+                                    Search options
+
+                                </span>
+                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-down': !status.open}"></i>
+                            </span>
+                        </accordion-heading>
+                        <button class="transparentButton navSerchOptionClass" ng-repeat="serachType in searchOptions" ng-click="onNavBarButtonsClicked(serachType)">{{serachType.text}}<i class="pull-right glyphicon glyphicon-chevron-right" ng-if="currentScreen == serachType.location"></i></button>
+                        <!--<button class="transparentButton navSerchOptionClass" ng-click="testFunction()">Via appointments<i class=" pull-right glyphicon glyphicon-chevron-right"></i></button>-->
+                    </accordion-group>
+                </accordion>
+                <button class="btnPatient" ng-click="syncData()">Get Patient Data</button>
+                <button class="btnPatient">Delete Patient Data</button>
+                <button class="btnPatient" ng-click="onCreatePatient()">Create new Patient</button>
+                <button class="transparentButton logoutButton" ng-click="logoutClicked()">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="loadingGifContainer" id="pageLoadingGif" ng-style="loaderGifClass">
+        <div class="loadingGif"></div>
+    </div>
+    <div id="patientSearchPage">
+        <div class="patientSearchPagePageHeader">
+            <div class="headderContentTable">
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" ng-click="navAppear = !navAppear">
+                        <!--"logoutClicked()">-->
+                        <img src="assets/images/nav_icon.png" class="" />
+                    </button>
+                </div>
+                <div class="textContainerDiv floatLeft">
+                    <button class="headderTextClass" disabled>
+                        <p class="pageTitles">{{currentScreen}}</p>
+                    </button>
+                </div>
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" disabled>
+                        <img src="assets/images/hp_logo.png" class="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="patientSearchPageBody">
+            <div class="patientSearchUtils">
+                <select-patient ng-if="currentScreen == 'Patient Search'"></select-patient>
+                <select-appointment ng-if="currentScreen== 'Appointments'"></select-appointment>
+                <add-patient ng-if="currentScreen == 'Add Patient'"></add-patient>
+            </div>
+        </div>
+
+
+        <div class="patientSearchPageFooter">
+
+        </div>
+
+    </div>
+</div>

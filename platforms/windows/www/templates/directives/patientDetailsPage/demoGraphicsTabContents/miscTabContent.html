@@ -1,0 +1,38 @@
+﻿
+<div class="patientMiscDemo patientDemoDetails">
+    <div class="patientMiscFirstClass">
+        <table>
+            <thead class="patientMiscFirstTableHead patientTableHead">
+                <tr>
+                    <th>DATE DECEASED:</th>
+                </tr>
+            </thead>
+            <tbody class="patientMiscFirstTableBody patientTableBody">
+                <tr>
+                    <td>{{miscDemo.dateDeceased | date: 'dd-MM-yyyy'}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="patientMiscSecondClass">
+        <table>
+            <thead class="patientMiscSecondTableHead patientTableHead">
+                <tr>
+                    <th>REASON DECEASED:</th>
+
+                </tr>
+            </thead>
+            <tbody class="patientMiscSecondTableBody patientTableBody">
+                <tr>
+                    <td>{{miscDemo.reasonDeceased}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

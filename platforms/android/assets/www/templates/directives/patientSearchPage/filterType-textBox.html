@@ -1,0 +1,6 @@
+﻿<div class="input-group" id="patient-search-bar" ng-controller="searchBarCtrl">
+    <input type="text" class="form-control" ng-model="patientFilterText" ng-change="filterTextChanged()" ng-keydown="keyDownEvent($event)" placeholder="{{filterName}}" ng-disabled="searchDesabled">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="onSearchClicked()" ng-disabled="searchDesabled"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+ </div>

@@ -1,0 +1,38 @@
+﻿<div class="generalPageContainers">
+    <div class="loadingGifContainer" id="pageLoadingGif" ng-style="loaderGifClass">
+        <div class="loadingGif"></div>
+    </div>
+        <div id="patientSearchPage">
+             <div class="patientSearchPagePageHeader">
+                    <div class="headderContentTable">
+                        <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" ng-click="logoutClicked()">
+                        <img src="assets/images/logout.png" class="" />
+                    </button>
+                       </div>
+                <div class="textContainerDiv floatLeft">
+                    <button class="headderTextClass" disabled>
+                        <p class="pageTitles">Appointments</p>
+                    </button>
+                </div>
+                <div class="imageContainerDiv floatLeft">
+                    <button class="hpLogoClass" disabled>
+                        <img src="assets/images/hp_logo.png" class="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="patientSearchPageBody">
+            <div class="patientSearchUtils">
+               <select-appointment></select-appointment>
+            </div>
+        </div>
+
+
+        <div class="patientSearchPageFooter"></div>
+
+       
+
+    </div>
+</div>
